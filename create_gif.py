@@ -4,8 +4,8 @@ import argparse
 import imageio
 import glob
 
-parser = argparse.ArgumentParser(description = 'Deep Convolutional GAN')
-parser.add_argument('--dataset', required = True, help = 'MNIST | Fashion MNIST | CIFAR 10 | ImageNet')
+parser = argparse.ArgumentParser(description = 'Create a GIF from a set of images')
+parser.add_argument('--dataset', required = True, help = 'MNIST | Fashion MNIST | CIFAR 10')
 
 # Parse all the arguments
 args = parser.parse_args()
