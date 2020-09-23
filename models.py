@@ -111,6 +111,7 @@ class Discriminator(nn.Module):
                                             bias = False),
                                   nn.Sigmoid()
                                   )
+                                  # 1 x 1 x 1
         self.apply(weights_init)
 
     def forward(self, input):
