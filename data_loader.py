@@ -20,7 +20,16 @@ def get_dataset(name = 'MNIST'):
                           )
         num_channels = 1
 
-    elif name == 'ImageNet':
+    elif name == 'CIFAR 10':
+        print("Loading CIFAR10")
+        dataset = datasets.CIFAR10(root = 'datasets/', train = True, download = True,
+                          transform = transforms.Compose([transforms.Resize((64, 64)),
+                                                          transforms.ToTensor(),
+                                                          transforms.Normalize((0.5,), (0.5,)),])
+                          )
+        num_channels = 3
+
+    else:
         print("Loading ImageNet")
         dataset = datasets.ImageNet(root = 'datasets/', train = True, download = False,
                                     transform = transforms.Compose([transforms.Resize((64, 64)),
