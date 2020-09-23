@@ -8,7 +8,7 @@ from train import train
 
 parser = argparse.ArgumentParser(description = 'Deep Convolutional GAN')
 # parser.add_argument('--dataset', required = True, help = 'MNIST | Fashion MNIST | ImageNet')
-parser.add_argument('--dataset', required = True, help = 'MNIST | Fashion MNIST | CIFAR 10 | ImageNet')
+parser.add_argument('--dataset', required = True, help = 'MNIST | Fashion MNIST | CIFAR 10')
 parser.add_argument('--batch_size', type = int, default = 32, help = 'Input batch size')
 parser.add_argument('--beta1', type = float, default = 0.5, help = 'Beta 1 for Adam optimizer')
 parser.add_argument('--lr', type = float, default = 0.0002, help = 'Learning rate')
