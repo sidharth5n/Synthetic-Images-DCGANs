@@ -15,7 +15,7 @@ def train(generator, discriminator, data_loader, loss_fn, optimizer_g, optimizer
         total_loss_g = 0.0
         for data, _ in data_loader:
             ############################
-            # (1) Update D network: maximize log(D(x)) + log(1 - D(G(z)))
+            # Update D network: maximize log(D(x)) + log(1 - D(G(z)))
             ###########################
             # train with real
             discriminator.zero_grad()
@@ -37,7 +37,7 @@ def train(generator, discriminator, data_loader, loss_fn, optimizer_g, optimizer
             optimizer_d.step()
 
             ############################
-            # (2) Update G network: maximize log(D(G(z)))
+            # Update G network: maximize log(D(G(z)))
             ###########################
             generator.zero_grad()
             label.fill_(1)  # fake labels are real for generator cost
@@ -55,3 +55,7 @@ def train(generator, discriminator, data_loader, loss_fn, optimizer_g, optimizer
         utils.save_image(fake.detach(),
                          '/content/drive/My Drive/Colab Notebooks/DCGAN/fake_samples_epoch_{:02d}.png'.format(epoch + 1),
                          normalize=True)
+
+        # save checkpoint
+        torch.save(generator.state_dict(), 'checkpoint/generator_epoch_{:02d}.pth'.format(epoch + 1))
+        torch.save(discriminator.state_dict(), 'checkpoint/generator_epoch_{:02d}.pth'.format(epoch + 1))
