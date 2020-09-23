@@ -125,3 +125,11 @@ class Discriminator(nn.Module):
     def forward(self, input):
         output = self.main(input)
         return output.view(-1, 1).squeeze(1)
+
+def weights_init(model):
+    classname = model.__class__.__name__
+    if classname.find('Conv') != -1:
+        model.weight.data.normal_(0.0, 0.02)
+    elif classname.find('BatchNorm') != -1:
+        model.weight.data.normal_(1.0, 0.02)
+        model.bias.data.fill_(0)
