@@ -1,5 +1,6 @@
 ## Source: https://www.tensorflow.org/tutorials/generative/dcgan#create_a_gif
 
+import argparse
 import imageio
 import glob
 
