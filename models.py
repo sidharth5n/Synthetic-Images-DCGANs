@@ -119,7 +119,7 @@ class Discriminator(nn.Module):
 
 def weights_init(model):
     """
-    Initialize weights of Conv and BathNorm layers from a normal distribution.
+    Initialize weights of Conv and BatchNorm layers from a normal distribution.
     """
     classname = model.__class__.__name__
     if classname.find('Conv') != -1:
