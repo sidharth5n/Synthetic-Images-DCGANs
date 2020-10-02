@@ -21,17 +21,17 @@ def train(generator, discriminator, data_loader, loss_fn, optimizer_g, optimizer
             discriminator.zero_grad()
             data = data.to(device)
             batch_size = data.size(0)
-            output = discriminator(data)
-            label = torch.ones_like(output)
-            loss_d_real = loss_fn(output, label)
+            real_preds = discriminator(data)
+            label = torch.ones_like(real_preds)
+            loss_d_real = loss_fn(real_preds, label)
             loss_d_real.backward()
 
             # train with fake
             noise = torch.randn(batch_size, generator.feature_size, 1, 1, device = device)
             fake = generator(noise)
             label.fill_(0)
-            output = discriminator(fake.detach())
-            loss_d_fake = loss_fn(output, label)
+            fake_preds = discriminator(fake.detach())
+            loss_d_fake = loss_fn(fake_preds, label)
             loss_d_fake.backward()
             optimizer_d.step()
 
