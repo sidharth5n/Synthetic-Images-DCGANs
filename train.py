@@ -21,9 +21,8 @@ def train(generator, discriminator, data_loader, loss_fn, optimizer_g, optimizer
             discriminator.zero_grad()
             data = data.to(device)
             batch_size = data.size(0)
-            label = torch.full(size = (batch_size,), fill_value = 1,
-                               dtype = data.dtype, device = device)
             output = discriminator(data)
+            label = torch.ones_like(output)
             loss_d_real = loss_fn(output, label)
             loss_d_real.backward()
 
@@ -53,7 +52,7 @@ def train(generator, discriminator, data_loader, loss_fn, optimizer_g, optimizer
 
         fake = generator(fixed_noise)
         utils.save_image(fake.detach(),
-                         '/content/drive/My Drive/Colab Notebooks/DCGAN/fake_samples_epoch_{:02d}.png'.format(epoch + 1),
+                         'results/fake_samples_epoch_{:02d}.png'.format(epoch + 1),
                          normalize=True)
 
         # save checkpoint
